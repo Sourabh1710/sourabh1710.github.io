@@ -1,0 +1,1890 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sourabh Sonker — Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --mono: "JetBrains Mono", monospace;
+        --sans: "Inter", sans-serif;
+      }
+
+      /* ── DARK THEME (default) ── */
+      html[data-theme="dark"] {
+        --bg: #0a0f1e;
+        --bg-nav: rgba(10, 15, 30, 0.88);
+        --card: #111827;
+        --card2: #141e30;
+        --border: #1e2d45;
+        --border2: #243044;
+        --heading: #f0f6ff;
+        --body-txt: #94a3b8;
+        --light-txt: #cbd5e1;
+        --indigo: #5b6ef5;
+        --indigo2: #7c8ff7;
+        --indigo-bg: rgba(91, 110, 245, 0.1);
+        --indigo-bd: rgba(91, 110, 245, 0.25);
+        --amber: #f0a500;
+        --green: #34d399;
+        --red: #f87171;
+        --pill-bg: rgba(255, 255, 255, 0.03);
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      /* ── LIGHT THEME ── */
+      html[data-theme="light"] {
+        --bg: #f4f6fb;
+        --bg-nav: rgba(244, 246, 251, 0.88);
+        --card: #ffffff;
+        --card2: #f1f4f9;
+        --border: #e1e7f0;
+        --border2: #cbd5e1;
+        --heading: #0f172a;
+        --body-txt: #475569;
+        --light-txt: #1e293b;
+        --indigo: #4338ca;
+        --indigo2: #4f46e5;
+        --indigo-bg: rgba(67, 56, 202, 0.07);
+        --indigo-bd: rgba(67, 56, 202, 0.18);
+        --amber: #b45309;
+        --green: #15803d;
+        --red: #dc2626;
+        --pill-bg: rgba(15, 23, 42, 0.03);
+        --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--sans);
+        background: var(--bg);
+        color: var(--body-txt);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        transition:
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 52px;
+        background: var(--bg-nav);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .nav-logo {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--indigo);
+        letter-spacing: 0.06em;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        color: var(--body-txt);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--heading);
+      }
+
+      /* THEME TOGGLE */
+      .theme-toggle {
+        position: relative;
+        width: 44px;
+        height: 24px;
+        border-radius: 12px;
+        background: var(--card2);
+        border: 1px solid var(--border2);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 2px;
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease;
+        flex-shrink: 0;
+      }
+
+      .toggle-knob {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--indigo);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+          background 0.25s ease;
+        transform: translateX(0);
+      }
+
+      html[data-theme="light"] .toggle-knob {
+        transform: translateX(20px);
+      }
+
+      .toggle-knob svg {
+        width: 11px;
+        height: 11px;
+      }
+
+      /* SHARED */
+      section {
+        padding: 96px 52px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--indigo);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--heading);
+        letter-spacing: -0.02em;
+        margin-bottom: 48px;
+        transition: color 0.25s ease;
+      }
+
+      h2 em {
+        color: var(--indigo);
+        font-style: normal;
+      }
+
+      /* HERO */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 120px;
+        padding-bottom: 64px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 52px 52px;
+        opacity: 0.5;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      html[data-theme="light"] #hero::before {
+        opacity: 0.6;
+      }
+
+      #hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 75% 65% at 40% 50%,
+          transparent 25%,
+          var(--bg) 100%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 780px;
+      }
+
+      .hero-eyebrow {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--indigo);
+        letter-spacing: 0.14em;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .hero-eyebrow::before {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--indigo);
+      }
+
+      h1 {
+        font-size: clamp(40px, 5.5vw, 68px);
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--heading);
+        letter-spacing: -0.025em;
+        margin-bottom: 10px;
+        transition: color 0.25s ease;
+      }
+
+      h1 span {
+        color: var(--indigo);
+      }
+
+      .hero-sub {
+        font-size: 16px;
+        color: var(--body-txt);
+        margin-bottom: 10px;
+        max-width: 600px;
+        font-weight: 400;
+        line-height: 1.75;
+      }
+
+      .hero-domain {
+        font-size: 13px;
+        color: var(--indigo2);
+        margin-bottom: 32px;
+        font-family: var(--mono);
+        opacity: 0.9;
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-bottom: 36px;
+      }
+
+      .tag {
+        font-family: var(--mono);
+        font-size: 11px;
+        padding: 4px 12px;
+        border-radius: 4px;
+        background: var(--indigo-bg);
+        border: 1px solid var(--indigo-bd);
+        color: var(--indigo2);
+        letter-spacing: 0.04em;
+      }
+
+      .metric-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 36px;
+        max-width: 640px;
+      }
+
+      .metric {
+        background: var(--card);
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        transition: background 0.25s ease;
+      }
+
+      .metric-val {
+        font-family: var(--mono);
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--heading);
+      }
+
+      .metric-val span {
+        color: var(--amber);
+        font-size: 13px;
+      }
+
+      .metric-label {
+        font-size: 9px;
+        color: var(--body-txt);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 11px 22px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .btn-primary {
+        background: var(--indigo);
+        color: #fff;
+        border: 1px solid var(--indigo);
+      }
+
+      .btn-primary:hover {
+        opacity: 0.88;
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--light-txt);
+        border: 1px solid var(--border2);
+      }
+
+      .btn-outline:hover {
+        border-color: var(--indigo);
+        color: var(--indigo2);
+      }
+
+      /* ABOUT */
+      #about {
+        border-top: 1px solid var(--border);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 56px;
+        align-items: start;
+      }
+
+      .about-text p {
+        color: var(--body-txt);
+        font-size: 14.5px;
+        line-height: 1.8;
+        margin-bottom: 14px;
+      }
+
+      .about-text p strong {
+        color: var(--light-txt);
+        font-weight: 600;
+      }
+
+      .about-text p em {
+        color: var(--indigo2);
+        font-style: normal;
+      }
+
+      .about-facts {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .fact {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding: 14px 16px;
+        border-radius: 7px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .fact-label {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        color: var(--body-txt);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .fact-value {
+        font-size: 13.5px;
+        color: var(--heading);
+        font-weight: 500;
+      }
+
+      /* PROJECTS */
+      #projects {
+        border-top: 1px solid var(--border);
+      }
+
+      .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .proj-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--card);
+        overflow: hidden;
+        transition:
+          border-color 0.25s,
+          transform 0.22s,
+          background 0.25s ease,
+          box-shadow 0.25s ease;
+        box-shadow: var(--shadow);
+      }
+
+      .proj-card:hover,
+      .proj-card.fade-up:hover,
+      .proj-card.fade-up.visible:hover {
+        border-color: var(--indigo);
+        transform: translateY(-2px);
+        box-shadow:
+          0 0 0 1px var(--indigo),
+          0 10px 30px var(--indigo-bg);
+      }
+
+      .proj-inner {
+        padding: 26px 30px;
+      }
+
+      .proj-grid {
+        display: block;
+      }
+
+      .proj-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .proj-image-container {
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: var(--card2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        margin-top: 14px;
+        /* Spacing below the headline */
+        margin-bottom: 18px;
+        /* Spacing above the description */
+        width: 100%;
+        max-height: 400px;
+        /* Prevents screenshot from being too tall */
+      }
+
+      html[data-theme="light"] .proj-image-container {
+        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+      }
+
+      .proj-image {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        display: block;
+        object-fit: cover;
+        object-position: top center;
+        /* Keeps dashboard headers visible */
+        transition: transform 0.25s ease;
+      }
+
+      .proj-card:hover .proj-image {
+        transform: scale(1.015);
+      }
+
+      .proj-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .proj-num {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--body-txt);
+        letter-spacing: 0.1em;
+      }
+
+      .proj-badges {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+
+      .pbadge {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        padding: 3px 9px;
+        border-radius: 3px;
+        letter-spacing: 0.04em;
+      }
+
+      .pb-beg {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+      }
+
+      .pb-int {
+        background: rgba(240, 165, 0, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(240, 165, 0, 0.25);
+      }
+
+      .pb-adv {
+        background: rgba(248, 113, 113, 0.1);
+        color: var(--red);
+        border: 1px solid rgba(248, 113, 113, 0.25);
+      }
+
+      .pb-dom {
+        background: var(--indigo-bg);
+        color: var(--indigo2);
+        border: 1px solid var(--indigo-bd);
+      }
+
+      h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--heading);
+        margin-bottom: 7px;
+        letter-spacing: -0.01em;
+        transition: color 0.25s ease;
+      }
+
+      .proj-desc {
+        font-size: 13.5px;
+        color: var(--body-txt);
+        line-height: 1.7;
+        margin-bottom: 16px;
+      }
+
+      .proj-metrics {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+        padding: 12px 16px;
+        background: var(--indigo-bg);
+        border: 1px solid var(--indigo-bd);
+        border-radius: 6px;
+      }
+
+      .pm {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .pm-val {
+        font-family: var(--mono);
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--amber);
+      }
+
+      .pm-label {
+        font-size: 9.5px;
+        color: var(--body-txt);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .proj-bullets {
+        list-style: none;
+        margin-bottom: 16px;
+      }
+
+      .proj-bullets li {
+        font-size: 13px;
+        color: var(--body-txt);
+        padding: 3px 0 3px 15px;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .proj-bullets li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--indigo);
+        font-size: 9px;
+        top: 5px;
+      }
+
+      .proj-bullets li strong {
+        color: var(--light-txt);
+        font-weight: 500;
+      }
+
+      .proj-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+
+      .stack-pill {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        padding: 3px 9px;
+        border-radius: 3px;
+        background: var(--pill-bg);
+        border: 1px solid var(--border);
+        color: var(--body-txt);
+      }
+
+      .proj-links {
+        display: flex;
+        gap: 10px;
+      }
+
+      .proj-link {
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--indigo2);
+        border: 1px solid var(--indigo-bd);
+        padding: 6px 14px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .proj-link:hover {
+        background: var(--indigo-bg);
+        border-color: var(--indigo);
+      }
+
+      /* BREADTH STRIP */
+      .breadth-strip {
+        margin-top: 32px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--card2);
+        overflow: hidden;
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .breadth-header {
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .breadth-header span {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--body-txt);
+        letter-spacing: 0.08em;
+      }
+
+      .breadth-header strong {
+        color: var(--indigo2);
+      }
+
+      .breadth-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+      }
+
+      .breadth-col {
+        padding: 16px 20px;
+        border-right: 1px solid var(--border);
+      }
+
+      .breadth-col:last-child {
+        border-right: none;
+      }
+
+      .breadth-col-title {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        color: var(--indigo);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .breadth-item {
+        font-size: 12px;
+        color: var(--body-txt);
+        padding: 2px 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .breadth-item::before {
+        content: "·";
+        color: var(--border2);
+        font-size: 14px;
+      }
+
+      /* SKILLS */
+      #skills {
+        border-top: 1px solid var(--border);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .skill-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 22px;
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .skill-card-title {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--indigo);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        padding-bottom: 9px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .skill-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .skill-item {
+        font-size: 12.5px;
+        color: var(--light-txt);
+        padding: 4px 11px;
+        border-radius: 4px;
+        background: var(--pill-bg);
+        border: 1px solid var(--border);
+      }
+
+      /* CERTS */
+      #certifications {
+        border-top: 1px solid var(--border);
+      }
+
+      .certs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .cert-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        transition:
+          border-color 0.2s,
+          background 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .cert-card:hover {
+        border-color: var(--indigo);
+        box-shadow:
+          0 0 0 1px var(--indigo),
+          0 8px 24px var(--indigo-bg);
+      }
+
+      .cert-card.wide {
+        grid-column: span 3;
+      }
+
+      .cert-issuer {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        color: var(--indigo);
+        letter-spacing: 0.07em;
+      }
+
+      .cert-title {
+        font-size: 12.5px;
+        color: var(--heading);
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .cert-platform {
+        font-size: 11px;
+        color: var(--body-txt);
+      }
+
+      .cert-link {
+        font-size: 11px;
+        color: var(--indigo2);
+        text-decoration: none;
+        font-weight: 500;
+        margin-top: 3px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .cert-link:hover {
+        color: var(--indigo);
+      }
+
+      /* CONTACT */
+      #contact {
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+
+      #contact h2 {
+        margin-bottom: 12px;
+      }
+
+      #contact p {
+        color: var(--body-txt);
+        max-width: 500px;
+        margin: 0 auto 32px;
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      footer {
+        text-align: center;
+        padding: 28px 52px;
+        border-top: 1px solid var(--border);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        color: var(--body-txt);
+      }
+
+      /* FADE IN */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 14px 20px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        section {
+          padding: 64px 20px;
+        }
+
+        #hero {
+          padding: 100px 20px 48px;
+        }
+
+        .metric-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .skills-grid,
+        .certs-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .breadth-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .cert-card.wide {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-logo">sourabh.sonker</div>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle light/dark theme"
+          title="Toggle theme"
+        >
+          <span class="toggle-knob" id="toggleKnob">
+            <svg
+              id="toggleIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path id="iconPath" d="" fill="white" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Data Scientist</div>
+        <h1>Sourabh<br /><span>Sonker</span></h1>
+        <p class="hero-sub">
+          Building production-grade ML, NLP, Time Series, and LLM systems — from
+          raw data to deployed, measurable results.
+        </p>
+        <p class="hero-domain">
+          // Domain interest: Finance · FinTech · Analytics-driven products
+        </p>
+        <div class="hero-tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">NLP · Transformers</span>
+          <span class="tag">Time Series</span>
+          <span class="tag">LLM · RAG</span>
+          <span class="tag">MLOps · CI/CD</span>
+          <span class="tag">Data Analysis</span>
+        </div>
+        <div class="metric-strip">
+          <div class="metric">
+            <div class="metric-val" id="m1">86.9<span>%</span></div>
+            <div class="metric-label">AUC-ROC</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val" id="m2">8.8<span>%</span></div>
+            <div class="metric-label">MAPE (Retail)</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val" id="m3">4.3<span>×</span></div>
+            <div class="metric-label">Bearish F1 Gain</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">5</div>
+            <div class="metric-label">Live Deployments</div>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+          <a
+            href="https://github.com/Sourabh1710"
+            target="_blank"
+            class="btn btn-outline"
+            >GitHub ↗</a
+          >
+          <a
+            href="https://www.linkedin.com/in/sourabh-sonker-620600236/"
+            target="_blank"
+            class="btn btn-outline"
+            >LinkedIn ↗</a
+          >
+          <a
+            href="Sourabh Sonker Resume.pdf"
+            target="_blank"
+            class="btn btn-outline"
+            >Download Resume ↓</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-label">// about</div>
+      <h2>The <em>Story</em></h2>
+      <div class="about-grid fade-up">
+        <div class="about-text">
+          <p>
+            I graduated from <strong>Delhi Technological University</strong> in
+            2024 with a B.Tech in Mechanical Engineering (CGPA: 7.81). In my
+            final year, I made a deliberate call to skip campus placements and
+            pivot to Data Science — betting on skills over credentials.
+          </p>
+          <p>
+            Since then, I've built
+            <em>5 production-deployed projects</em> covering the full modern DS
+            stack: classical ML with explainability, NLP with transformer
+            models, time series forecasting, LLM-powered RAG systems, and an
+            MLOps pipeline with Docker and CI/CD. Every project is live,
+            measurable, and built to production standards.
+          </p>
+          <p>
+            My skills are domain-agnostic — the same tools that power churn
+            prediction work for retention in EdTech; financial forecasting
+            techniques apply to any sequential data problem. I have a
+            <strong>particular interest</strong> in Finance and FinTech, but I
+            bring full-stack DS capability to any data-intensive product.
+          </p>
+        </div>
+        <div class="about-facts">
+          <div class="fact">
+            <div class="fact-label">Education</div>
+            <div class="fact-value">B.Tech Mech. Engg. · DTU · 2024</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">CGPA</div>
+            <div class="fact-value">7.81 / 10.0</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Location</div>
+            <div class="fact-value">
+              Delhi, India · Open to Remote · PAN India
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Domain Interest</div>
+            <div class="fact-value">Finance · FinTech · Analytics</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Skills Apply To</div>
+            <div class="fact-value">Any data-intensive domain</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Availability</div>
+            <div class="fact-value">Immediately Available</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">// projects</div>
+      <h2>Featured <em>Projects</em></h2>
+      <div class="projects-list">
+        <!-- P1 -->
+        <div class="proj-card fade-up">
+          <div class="proj-inner">
+            <div class="proj-grid">
+              <div class="proj-info">
+                <div class="proj-top">
+                  <span class="proj-num">01 / 05</span>
+                  <div class="proj-badges">
+                    <span class="pbadge pb-beg">BEGINNER</span
+                    ><span class="pbadge pb-dom">ML · CLASSIFICATION</span>
+                  </div>
+                </div>
+                <h3>Bank Customer Churn Prediction &amp; Explainability</h3>
+                <div class="proj-image-container">
+                  <img
+                    src="images/bank-churn.png"
+                    alt="Bank Customer Churn Predictor Interface"
+                    class="proj-image"
+                  />
+                </div>
+                <p class="proj-desc">
+                  Full ML lifecycle on 10,000 bank customer records — imbalanced
+                  data handling, Bayesian hyperparameter tuning, and
+                  SHAP-powered per-customer explainability. Business framing
+                  throughout: quantifying the real cost of missing a churn
+                  event.
+                </p>
+                <div class="proj-metrics">
+                  <div class="pm">
+                    <div class="pm-val">86.9%</div>
+                    <div class="pm-label">XGBoost AUC-ROC</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">+3.6 pts</div>
+                    <div class="pm-label">Optuna gain</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">4:1</div>
+                    <div class="pm-label">Imbalance handled</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">5</div>
+                    <div class="pm-label">Retention levers found</div>
+                  </div>
+                </div>
+                <ul class="proj-bullets">
+                  <li>
+                    Benchmarked <strong>3 models</strong>: XGBoost (86.9%) · RF
+                    (86.2%) · LR (77.2%) with stratified evaluation; Optuna
+                    Bayesian tuning (50 trials) added +3.6 pts over untuned
+                    baseline
+                  </li>
+                  <li>
+                    Engineered 4 domain features — products_per_tenure ranked #2
+                    in SHAP importance, capturing the non-linear 3–4 product
+                    churn cliff
+                  </li>
+                  <li>
+                    SHAP TreeExplainer identified top 5 levers: age 41–60,
+                    Germany geography, inactive membership, mono-product
+                    high-balance holders, credit score &lt;600
+                  </li>
+                </ul>
+                <div class="proj-stack">
+                  <span class="stack-pill">Python</span
+                  ><span class="stack-pill">XGBoost</span
+                  ><span class="stack-pill">scikit-learn</span
+                  ><span class="stack-pill">SMOTE</span
+                  ><span class="stack-pill">SHAP</span
+                  ><span class="stack-pill">Optuna</span
+                  ><span class="stack-pill">Streamlit</span>
+                </div>
+                <div class="proj-links">
+                  <a
+                    class="proj-link"
+                    href="https://github.com/Sourabh1710/bank-churn-explainability-dashboard"
+                    target="_blank"
+                    >⌥ GitHub</a
+                  >
+                  <a
+                    class="proj-link"
+                    href="https://sourabhsonker-bank-churn-predictor.streamlit.app/"
+                    target="_blank"
+                    >↗ Live App</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2 -->
+        <div class="proj-card fade-up">
+          <div class="proj-inner">
+            <div class="proj-grid">
+              <div class="proj-info">
+                <div class="proj-top">
+                  <span class="proj-num">02 / 05</span>
+                  <div class="proj-badges">
+                    <span class="pbadge pb-int">INTERMEDIATE</span
+                    ><span class="pbadge pb-dom">NLP · TRANSFORMERS</span>
+                  </div>
+                </div>
+                <h3>Financial News Sentiment Analysis + Stock Correlation</h3>
+                <div class="proj-image-container">
+                  <img
+                    src="images/financial-sentiment.png"
+                    alt="Financial News Sentiment Analyser Interface"
+                    class="proj-image"
+                  />
+                </div>
+                <p class="proj-desc">
+                  Finance-domain NLP using FinBERT — a BERT model pre-trained on
+                  financial text. Goes beyond accuracy: ablation studies, a
+                  caught evaluation bug, and a statistically honest
+                  sentiment-price correlation study across 5 tickers and 2 years
+                  of data.
+                </p>
+                <div class="proj-metrics">
+                  <div class="pm">
+                    <div class="pm-val">75.1%</div>
+                    <div class="pm-label">FinBERT accuracy</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">4.3×</div>
+                    <div class="pm-label">Bearish F1 gain</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">5,842</div>
+                    <div class="pm-label">Headlines</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">&lt;1 sec</div>
+                    <div class="pm-label">Tab load time</div>
+                  </div>
+                </div>
+                <ul class="proj-bullets">
+                  <li>
+                    FinBERT zero-shot: 4.3× improvement in bearish detection
+                    (F1: 0.14 → 0.60) over TF-IDF+SVM; domain-aware
+                    preprocessing validated via ablation study
+                  </li>
+                  <li>
+                    Identified and corrected a label-misalignment bug that
+                    inflated VADER baseline by
+                    <strong>25.3 percentage points</strong> — caught through EDA
+                    notebook review
+                  </li>
+                  <li>
+                    4-tab Streamlit dashboard; ~1hr cold-start resolved by
+                    precomputing FinBERT artifacts; yfinance rate-limiting fixed
+                    via precomputed CSVs
+                  </li>
+                </ul>
+                <div class="proj-stack">
+                  <span class="stack-pill">Python</span
+                  ><span class="stack-pill">FinBERT</span
+                  ><span class="stack-pill">HuggingFace</span
+                  ><span class="stack-pill">PyTorch</span
+                  ><span class="stack-pill">scikit-learn</span
+                  ><span class="stack-pill">yfinance</span
+                  ><span class="stack-pill">Plotly</span
+                  ><span class="stack-pill">Streamlit</span>
+                </div>
+                <div class="proj-links">
+                  <a
+                    class="proj-link"
+                    href="https://github.com/Sourabh1710/financial-News-Sentiment-Analysis"
+                    target="_blank"
+                    >⌥ GitHub</a
+                  >
+                  <a
+                    class="proj-link"
+                    href="https://sourabhsonker-finance-news-sentiment-analysis.streamlit.app/"
+                    target="_blank"
+                    >↗ Live App</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P3 -->
+        <div class="proj-card fade-up">
+          <div class="proj-inner">
+            <div class="proj-grid">
+              <div class="proj-info">
+                <div class="proj-top">
+                  <span class="proj-num">03 / 05</span>
+                  <div class="proj-badges">
+                    <span class="pbadge pb-int">INTERMEDIATE</span
+                    ><span class="pbadge pb-dom">TIME SERIES</span>
+                  </div>
+                </div>
+                <h3>Retail + NSE Stock Time Series Forecasting</h3>
+                <div class="proj-image-container">
+                  <img
+                    src="images/stock-forecaster.png"
+                    alt="NSE Stock Forecaster Interface"
+                    class="proj-image"
+                  />
+                </div>
+                <p class="proj-desc">
+                  Dual-domain forecasting — 3M+ rows of retail data plus live
+                  NSE stock prices. Every modelling decision is documented and
+                  justified: why SARIMA beat Prophet here, what the earthquake
+                  spike means, why stock MAPE is higher than retail MAPE.
+                </p>
+                <div class="proj-metrics">
+                  <div class="pm">
+                    <div class="pm-val">8.8%</div>
+                    <div class="pm-label">SARIMA MAPE</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">r = −0.47</div>
+                    <div class="pm-label">Oil-sales corr.</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">3M+</div>
+                    <div class="pm-label">Rows processed</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">10</div>
+                    <div class="pm-label">NSE tickers live</div>
+                  </div>
+                </div>
+                <ul class="proj-bullets">
+                  <li>
+                    SARIMA: 8.8% MAPE on 90-day retail horizon; Prophet 12.1% —
+                    advantage absent in holiday-free Jun–Aug 2017 test window
+                    (documented with reasoning)
+                  </li>
+                  <li>
+                    Macro signal: WTI oil price r = −0.47 with Ecuador grocery
+                    sales; April 2016 earthquake modelled as named Prophet event
+                    (2× normal Saturday demand)
+                  </li>
+                  <li>
+                    Extended to live NSE stocks; ARIMA(0,1,1) order consistent
+                    with weak-form EMH — documented as insight, not buried;
+                    Streamlit app supporting 10 tickers
+                  </li>
+                </ul>
+                <div class="proj-stack">
+                  <span class="stack-pill">Python</span
+                  ><span class="stack-pill">Statsmodels</span
+                  ><span class="stack-pill">pmdarima</span
+                  ><span class="stack-pill">Prophet</span
+                  ><span class="stack-pill">yfinance</span
+                  ><span class="stack-pill">Plotly</span
+                  ><span class="stack-pill">Streamlit</span>
+                </div>
+                <div class="proj-links">
+                  <a
+                    class="proj-link"
+                    href="https://github.com/Sourabh1710/Retail-Stock-Time-Series-Forecasting"
+                    target="_blank"
+                    >⌥ GitHub</a
+                  >
+                  <a
+                    class="proj-link"
+                    href="https://sourabhsonker-retail-stock-time-series-forecasting.streamlit.app/"
+                    target="_blank"
+                    >↗ Live App</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P4 -->
+        <div class="proj-card fade-up">
+          <div class="proj-inner">
+            <div class="proj-grid">
+              <div class="proj-info">
+                <div class="proj-top">
+                  <span class="proj-num">04 / 05</span>
+                  <div class="proj-badges">
+                    <span class="pbadge pb-adv">ADVANCED</span
+                    ><span class="pbadge pb-dom">MLOPS · CI/CD</span>
+                  </div>
+                </div>
+                <h3>House Price Prediction — End-to-End MLOps Pipeline</h3>
+                <div class="proj-image-container">
+                  <img
+                    src="images/house-price-api.png"
+                    alt="House Price Prediction API Documentation Interface"
+                    class="proj-image"
+                  />
+                </div>
+                <p class="proj-desc">
+                  Production ML engineering from pipeline design to live
+                  deployment. A leak-proof sklearn pipeline, MLflow experiment
+                  tracking, FastAPI REST service, Docker container, and GitHub
+                  Actions CI/CD that auto-deploys on every push — with failing
+                  tests blocking deployment.
+                </p>
+                <div class="proj-metrics">
+                  <div class="pm">
+                    <div class="pm-val">0.1209</div>
+                    <div class="pm-label">XGBoost CV RMSLE</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">4</div>
+                    <div class="pm-label">Models tracked</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">5-fold</div>
+                    <div class="pm-label">Cross-validation</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">Live</div>
+                    <div class="pm-label">API on Render</div>
+                  </div>
+                </div>
+                <ul class="proj-bullets">
+                  <li>
+                    ColumnTransformer fit exclusively on training folds —
+                    prevents data leakage; MLflow tracking: XGBoost selected at
+                    CV RMSLE 0.1209 over LightGBM (0.1284), Ridge (0.1392)
+                  </li>
+                  <li>
+                    FastAPI with Pydantic validation and Swagger UI; multi-stage
+                    Docker build; GitHub Actions CI/CD — tests → retrain → build
+                    → deploy; failing tests block deployment
+                  </li>
+                  <li>
+                    Diagnosed and resolved 5 independent production issues
+                    including CI mock scoping and Docker image bloat
+                  </li>
+                </ul>
+                <div class="proj-stack">
+                  <span class="stack-pill">Python</span
+                  ><span class="stack-pill">scikit-learn</span
+                  ><span class="stack-pill">XGBoost</span
+                  ><span class="stack-pill">MLflow</span
+                  ><span class="stack-pill">FastAPI</span
+                  ><span class="stack-pill">Docker</span
+                  ><span class="stack-pill">GitHub Actions</span
+                  ><span class="stack-pill">Render</span>
+                </div>
+                <div class="proj-links">
+                  <a
+                    class="proj-link"
+                    href="https://github.com/Sourabh1710/house-price-mlops"
+                    target="_blank"
+                    >⌥ GitHub</a
+                  >
+                  <a
+                    class="proj-link"
+                    href="https://house-price-api-latest-kmxu.onrender.com/docs"
+                    target="_blank"
+                    >↗ Live API</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P5 -->
+        <div class="proj-card fade-up">
+          <div class="proj-inner">
+            <div class="proj-grid">
+              <div class="proj-info">
+                <div class="proj-top">
+                  <span class="proj-num">05 / 05</span>
+                  <div class="proj-badges">
+                    <span class="pbadge pb-adv">ADVANCED</span
+                    ><span class="pbadge pb-dom">LLM · RAG · GenAI</span>
+                  </div>
+                </div>
+                <h3>RAG-Based Document Q&amp;A System</h3>
+                <div class="proj-image-container">
+                  <img
+                    src="images/rag-document-qa.png"
+                    alt="RAG Document Q&A App Interface"
+                    class="proj-image"
+                  />
+                </div>
+                <p class="proj-desc">
+                  End-to-end Retrieval-Augmented Generation pipeline. Upload any
+                  PDF or text document, ask questions in natural language, get
+                  answers grounded strictly in the source content — with
+                  multi-turn conversation memory and zero hallucination by
+                  design.
+                </p>
+                <div class="proj-metrics">
+                  <div class="pm">
+                    <div class="pm-val">384-dim</div>
+                    <div class="pm-label">FAISS vectors</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">2</div>
+                    <div class="pm-label">LLM backends</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">Zero</div>
+                    <div class="pm-label">Hallucinations</div>
+                  </div>
+                  <div class="pm">
+                    <div class="pm-val">Multi-turn</div>
+                    <div class="pm-label">Conversation</div>
+                  </div>
+                </div>
+                <ul class="proj-bullets">
+                  <li>
+                    PyPDF2 → RecursiveCharacterTextSplitter
+                    (800-char/100-overlap) → all-MiniLM-L6-v2 embeddings → FAISS
+                    vector store for semantic retrieval
+                  </li>
+                  <li>
+                    Dual LLM backends:
+                    <strong>Google Gemini 2.5 Flash</strong> +
+                    <strong>Groq Llama 3</strong> via LangChain; custom
+                    anti-hallucination system prompt constrains answers to
+                    retrieved context only
+                  </li>
+                  <li>
+                    ConversationBufferMemory for multi-turn Q&amp;A;
+                    @st.cache_resource model caching eliminates per-request
+                    reload; deployed on Streamlit Cloud
+                  </li>
+                </ul>
+                <div class="proj-stack">
+                  <span class="stack-pill">Python</span
+                  ><span class="stack-pill">LangChain</span
+                  ><span class="stack-pill">FAISS</span
+                  ><span class="stack-pill">HuggingFace</span
+                  ><span class="stack-pill">Gemini 2.5 Flash</span
+                  ><span class="stack-pill">Groq Llama 3</span
+                  ><span class="stack-pill">Streamlit</span
+                  ><span class="stack-pill">PyPDF2</span>
+                </div>
+                <div class="proj-links">
+                  <a
+                    class="proj-link"
+                    href="https://github.com/Sourabh1710/rag-qa-app"
+                    target="_blank"
+                    >⌥ GitHub</a
+                  >
+                  <a
+                    class="proj-link"
+                    href="https://sourabhsonker-rag-app.streamlit.app/"
+                    target="_blank"
+                    >↗ Live App</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BREADTH STRIP -->
+      <div class="breadth-strip fade-up">
+        <div class="breadth-header">
+          <span
+            >Beyond these 5 featured projects, I have built
+            <strong>20+ additional projects</strong> across SQL, Excel
+            analytics, Power BI dashboards, Python automation, and ML
+            pipelines.</span
+          >
+          <a
+            href="https://github.com/Sourabh1710"
+            target="_blank"
+            style="
+              color: var(--indigo2);
+              text-decoration: none;
+              font-size: 12px;
+              white-space: nowrap;
+              margin-left: auto;
+            "
+            >View GitHub ↗</a
+          >
+        </div>
+        <div class="breadth-grid">
+          <div class="breadth-col">
+            <div class="breadth-col-title">SQL</div>
+            <div class="breadth-item">Window Functions</div>
+            <div class="breadth-item">CTEs & Subqueries</div>
+            <div class="breadth-item">Business Analytics</div>
+            <div class="breadth-item">Data Cleaning</div>
+          </div>
+          <div class="breadth-col">
+            <div class="breadth-col-title">Excel & BI</div>
+            <div class="breadth-item">Power Query</div>
+            <div class="breadth-item">Pivot Dashboards</div>
+            <div class="breadth-item">Power BI (DAX)</div>
+            <div class="breadth-item">Financial Models</div>
+          </div>
+          <div class="breadth-col">
+            <div class="breadth-col-title">Python Analytics</div>
+            <div class="breadth-item">EDA Pipelines</div>
+            <div class="breadth-item">Automation Scripts</div>
+            <div class="breadth-item">Data Visualisation</div>
+            <div class="breadth-item">Statistical Analysis</div>
+          </div>
+          <div class="breadth-col">
+            <div class="breadth-col-title">ML & MLOps</div>
+            <div class="breadth-item">Classification & Regression</div>
+            <div class="breadth-item">NLP Pipelines</div>
+            <div class="breadth-item">AWS Deployments</div>
+            <div class="breadth-item">Experiment Tracking</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-label">// skills</div>
+      <h2>Technical <em>Stack</em></h2>
+      <div class="skills-grid fade-up">
+        <div class="skill-card">
+          <div class="skill-card-title">Languages &amp; Data</div>
+          <div class="skill-items">
+            <span class="skill-item">Python</span
+            ><span class="skill-item">SQL</span>
+            <span class="skill-item">Pandas</span
+            ><span class="skill-item">NumPy</span>
+            <span class="skill-item">Excel</span
+            ><span class="skill-item">Plotly</span>
+            <span class="skill-item">Power BI</span
+            ><span class="skill-item">yfinance</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Machine Learning</div>
+          <div class="skill-items">
+            <span class="skill-item">XGBoost</span
+            ><span class="skill-item">LightGBM</span>
+            <span class="skill-item">scikit-learn</span
+            ><span class="skill-item">SMOTE</span>
+            <span class="skill-item">SHAP</span
+            ><span class="skill-item">Optuna</span>
+            <span class="skill-item">Prophet</span
+            ><span class="skill-item">SARIMA</span>
+            <span class="skill-item">PyTorch</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">LLM / NLP</div>
+          <div class="skill-items">
+            <span class="skill-item">LangChain</span
+            ><span class="skill-item">FAISS</span>
+            <span class="skill-item">HuggingFace</span
+            ><span class="skill-item">FinBERT</span>
+            <span class="skill-item">Sentence-Transformers</span>
+            <span class="skill-item">Gemini 2.5 Flash</span>
+            <span class="skill-item">Groq Llama 3</span
+            ><span class="skill-item">NLTK</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">MLOps &amp; Deployment</div>
+          <div class="skill-items">
+            <span class="skill-item">FastAPI</span
+            ><span class="skill-item">Docker</span>
+            <span class="skill-item">GitHub Actions</span
+            ><span class="skill-item">MLflow</span>
+            <span class="skill-item">Render</span
+            ><span class="skill-item">Streamlit</span>
+            <span class="skill-item">Pydantic</span
+            ><span class="skill-item">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="section-label">// certifications</div>
+      <h2>Learning &amp; <em>Credentials</em></h2>
+      <div class="certs-grid fade-up">
+        <div class="cert-card">
+          <div class="cert-issuer">Hugging Face</div>
+          <div class="cert-title">AI Agents Course</div>
+          <div class="cert-platform">Verified Certificate</div>
+          <a
+            class="cert-link"
+            href="https://drive.google.com/file/d/1LjPHv2RztEv-XhinCTYir-PEbQz4kA9J/view?usp=sharing"
+            target="_blank"
+            >View Certificate ↗</a
+          >
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">University of Amsterdam · Coursera</div>
+          <div class="cert-title">Basic Statistics</div>
+          <div class="cert-platform">Verified Certificate</div>
+          <a
+            class="cert-link"
+            href="https://drive.google.com/file/d/1ZVBYzzcUxwtBhp-Wb-zyH-AY9NM6PmQH/view"
+            target="_blank"
+            >View Certificate ↗</a
+          >
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Macquarie University · Coursera</div>
+          <div class="cert-title">Excel Skills for Business: Essentials</div>
+          <div class="cert-platform">Verified Certificate</div>
+          <a
+            class="cert-link"
+            href="https://drive.google.com/file/d/1AKrSdEadtujIY_Oq6iwFzRVbIa-9mF_2/view"
+            target="_blank"
+            >View Certificate ↗</a
+          >
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Macquarie University · Coursera</div>
+          <div class="cert-title">Excel Skills for Business: Advanced</div>
+          <div class="cert-platform">Verified Certificate</div>
+          <a
+            class="cert-link"
+            href="https://drive.google.com/file/d/1suPmVOZSSSNyGKJQ7m6Buhj2Y1SEdJz8/view"
+            target="_blank"
+            >View Certificate ↗</a
+          >
+        </div>
+        <div class="cert-card wide">
+          <div class="cert-issuer">Kaggle · 10 Micro-Course Certificates</div>
+          <div class="cert-title">
+            Python · Pandas · Data Visualisation · SQL Intro · SQL Advanced ·
+            Data Cleaning · Feature Engineering · Machine Learning · Deep
+            Learning · ML Explainability · Time Series
+          </div>
+          <div class="cert-platform">All Verified</div>
+          <a
+            class="cert-link"
+            href="https://drive.google.com/drive/folders/1DzcJw6rX4UjEbZvSZcay6wK12G-FnJ8d"
+            target="_blank"
+            >View All Certificates ↗</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-label">// contact</div>
+      <h2>Let's <em>Talk</em></h2>
+      <p>
+        Open to Data Scientist and Analyst roles at startups and growth-stage
+        companies. Strong preference for data-intensive products — Finance,
+        FinTech, EdTech, HealthTech, SaaS analytics. Available immediately.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:sourabhsonker17@gmail.com" class="btn btn-primary"
+          >✉ sourabhsonker17@gmail.com</a
+        >
+        <a
+          href="https://www.linkedin.com/in/sourabh-sonker-620600236/"
+          target="_blank"
+          class="btn btn-outline"
+          >LinkedIn ↗</a
+        >
+        <a
+          href="https://github.com/Sourabh1710"
+          target="_blank"
+          class="btn btn-outline"
+          >GitHub ↗</a
+        >
+      </div>
+    </section>
+
+    <footer>
+      Sourabh Sonker · Delhi, India · Built with purpose, deployed with care
+    </footer>
+
+    <script>
+      // ── THEME TOGGLE ──
+      const root = document.documentElement;
+      const toggleBtn = document.getElementById("themeToggle");
+      const iconPath = document.getElementById("iconPath");
+
+      const SUN_PATH =
+        "M12 4a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1zm0 14a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm9-6a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zM6 12a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zm12.07-6.07a1 1 0 0 1 0 1.41l-.7.7a1 1 0 1 1-1.42-1.41l.71-.71a1 1 0 0 1 1.41 0zM7.05 16.95a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.7-.71a1 1 0 0 1 1.42 0zm11.02 1.41a1 1 0 0 1-1.41 0l-.71-.7a1 1 0 1 1 1.41-1.42l.71.71a1 1 0 0 1 0 1.41zM7.05 7.05a1 1 0 0 1-1.41 0l-.71-.7A1 1 0 1 1 6.34 4.93l.71.71a1 1 0 0 1 0 1.41zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z";
+      const MOON_PATH =
+        "M20.742 13.045a8.088 8.088 0 0 1-2.077.273c-4.508 0-8.16-3.653-8.16-8.16 0-1.022.19-1.999.534-2.898a.75.75 0 0 0-.917-.99A10.025 10.025 0 0 0 2.25 11.25c0 5.523 4.477 10 10 10a10.025 10.025 0 0 0 9.48-7.872.75.75 0 0 0-.988-.333z";
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        iconPath.setAttribute("d", theme === "dark" ? MOON_PATH : SUN_PATH);
+        try {
+          localStorage.setItem("portfolio-theme", theme);
+        } catch (e) {}
+      }
+
+      function getInitialTheme() {
+        try {
+          const saved = localStorage.getItem("portfolio-theme");
+          if (saved === "dark" || saved === "light") return saved;
+        } catch (e) {}
+        return window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark";
+      }
+
+      applyTheme(getInitialTheme());
+
+      toggleBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        applyTheme(current === "dark" ? "light" : "dark");
+      });
+
+      // ── FADE UP ──
+      const obs = new IntersectionObserver(
+        (e) =>
+          e.forEach((x) => {
+            if (x.isIntersecting) x.target.classList.add("visible");
+          }),
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
+
+      // ── METRIC COUNTERS ──
+      function countUp(el, target, dec, suffix) {
+        const dur = 1500,
+          start = performance.now();
+        const step = (now) => {
+          const p = Math.min((now - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.innerHTML = (ease * target).toFixed(dec) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+
+      const strip = document.querySelector(".metric-strip");
+      const mo = new IntersectionObserver(
+        (e) => {
+          if (e[0].isIntersecting) {
+            countUp(document.getElementById("m1"), 86.9, 1, "<span>%</span>");
+            countUp(document.getElementById("m2"), 8.8, 1, "<span>%</span>");
+            countUp(document.getElementById("m3"), 4.3, 1, "<span>×</span>");
+            mo.disconnect();
+          }
+        },
+        { threshold: 0.5 },
+      );
+      if (strip) mo.observe(strip);
+    </script>
+  </body>
+</html>
